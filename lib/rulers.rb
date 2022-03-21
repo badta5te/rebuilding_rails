@@ -2,15 +2,14 @@
 
 require "rulers/version"
 require "rulers/routing"
+require "rulers/util"
+require "rulers/dependencies"
 
 module Rulers
   class Error < StandardError; end
 
   class Application
     def call(env)
-      pp "called rullers/application/call"
-      [404, { "Content-Type" => "text/html" }, []] if env["PATH_INFO"] == "/favicon"
-
       klass, act = get_controller_and_action(env)
       controller = klass.new(env)
       text = controller.send(act)
