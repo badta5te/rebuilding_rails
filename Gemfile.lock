@@ -1,13 +1,15 @@
 PATH
   remote: .
   specs:
-    rulers (0.0.1)
+    rulers (0.0.2)
+      erubis (~> 2.7.0)
       rack (~> 2.2.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    erubis (2.7.0)
     minitest (5.15.0)
     parallel (1.21.0)
     parser (3.1.0.0)

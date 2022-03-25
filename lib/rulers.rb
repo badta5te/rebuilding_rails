@@ -4,25 +4,24 @@ require "rulers/version"
 require "rulers/routing"
 require "rulers/util"
 require "rulers/dependencies"
+require "rulers/controller"
 
 module Rulers
   class Error < StandardError; end
 
   class Application
     def call(env)
-      klass, act = get_controller_and_action(env)
-      controller = klass.new(env)
-      text = controller.send(act)
-      [200, { "Content-Type" => "text/html" },
-       [text]]
-    end
-  end
-
-  class Controller
-    attr_reader :env
-
-    def initialize(env)
-      @env = env
+      if env["PATH_INFO"] == "/favicon.ico"
+        [404, { "Content-Type" => "text/html" }, []]
+      elsif env["PATH_INFO"] == "/"
+        [302, { 'Location' => "/quotes/a_quote" }, []]
+      else
+        klass, act = get_controller_and_action(env)
+        controller = klass.new(env)
+        text = controller.send(act)
+        [200, { "Content-Type" => "text/html" },
+         [text]]
+      end
     end
   end
 end
