@@ -65,7 +65,6 @@ module Rulers
       def self.find(id)
         FileModel.new("db/quotes/#{id}.json")
       rescue Exception => e
-        puts "Exception: #{e.inspect}"
         nil
       end
 
