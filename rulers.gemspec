@@ -38,4 +38,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "rack", "~> 2.2.3"
   spec.add_development_dependency "minitest", "~> 5.15.0"
   spec.add_development_dependency "rack-test", "~> 1.1.0"
+  spec.add_development_dependency "sqlite3", "~> 1.4.2"
 end

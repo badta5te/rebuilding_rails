@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rulers (0.0.2)
+    rulers (0.0.3)
       erubis (~> 2.7.0)
       multi_json (~> 1.15.0)
       rack (~> 2.2.3)
@@ -35,6 +35,7 @@ GEM
     rubocop-ast (1.15.1)
       parser (>= 3.0.1.1)
     ruby-progressbar (1.11.0)
+    sqlite3 (1.4.2)
     unicode-display_width (2.1.0)
 
 PLATFORMS
@@ -46,6 +47,7 @@ DEPENDENCIES
   rake (~> 13.0)
   rubocop (~> 1.21)
   rulers!
+  sqlite3 (~> 1.4.2)
 
 BUNDLED WITH
    2.3.10
