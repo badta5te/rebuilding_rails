@@ -5,6 +5,7 @@ PATH
       erubis (~> 2.7.0)
       multi_json (~> 1.15.0)
       rack (~> 2.2.3)
+      sqlite3 (~> 1.4.2)
 
 GEM
   remote: https://rubygems.org/
@@ -47,7 +48,6 @@ DEPENDENCIES
   rake (~> 13.0)
   rubocop (~> 1.21)
   rulers!
-  sqlite3 (~> 1.4.2)
 
 BUNDLED WITH
    2.3.10
