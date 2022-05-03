@@ -11,22 +11,31 @@ module Rulers
   class Error < StandardError; end
 
   class Application
+    # def call(env)
+    #   if env["PATH_INFO"] == "/favicon.ico"
+    #     [404, { "Content-Type" => "text/html" }, []]
+    #   elsif env["PATH_INFO"] == "/"
+    #     [302, { 'Location' => "/quotes/a_quote" }, []]
+    #   else
+    #     klass, act = get_controller_and_action(env)
+    #     controller = klass.new(env)
+    #     text = controller.send(act)
+    #     r = controller.get_response
+    #     if r
+    #       [r.status, r.headers, [r.body].flatten]
+    #     else
+    #       [200, { 'Content-Type' => 'text/html' }, [text]]
+    #     end
+    #   end
+    # end
+    #
     def call(env)
-      if env["PATH_INFO"] == "/favicon.ico"
+      if env['PATH_INFO'] == "/favicon.ico"
         [404, { "Content-Type" => "text/html" }, []]
-      elsif env["PATH_INFO"] == "/"
-        [302, { 'Location' => "/quotes/a_quote" }, []]
-      else
-        klass, act = get_controller_and_action(env)
-        controller = klass.new(env)
-        text = controller.send(act)
-        r = controller.get_response
-        if r
-          [r.status, r.headers, [r.body].flatten]
-        else
-          [200, { 'Content-Type' => 'text/html' }, [text]]
-        end
       end
+
+      rack_app = get_rack_app(env)
+      rack_app.call(env)
     end
   end
 end
